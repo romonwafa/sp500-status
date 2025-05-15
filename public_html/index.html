@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="up"> <!-- Change to 'down' when needed -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SP500 Status - Track the latest updates on the S&P 500 index.">
+    <title>SP500 Status</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="up"> <!-- Change this to 'down' as needed -->
+    <header>
+        <h1 id="status-message">Loading status...</h1>
+    </header>
+
+    <section class="image-container">
+        <img src="assets/up.png" alt="Market Status" class="market-image" id="market-image">
+    </section>
+
+    <!-- <main>
+        <p>Track the latest updates on the S&P 500 index here.</p>
+    </main> -->
+
+    <footer>
+        <p>&copy; 2025 SP500 Status. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Dynamically set the message and image based on body class
+        const bodyClass = document.body.classList.contains('down') ? 'down' : 'up';
+        const message = bodyClass === 'down'
+            ? 'The S&P 500 is down today 😟'
+            : 'The S&P 500 is up today 🚀';
+        const imageSrc = bodyClass === 'down' ? 'assets/down.jpg' : 'assets/up.png';
+
+        document.getElementById('status-message').textContent = message;
+        document.getElementById('market-image').src = imageSrc;
+        document.getElementById('market-image').alt = message;
+    </script>
+</body>
+</html>
