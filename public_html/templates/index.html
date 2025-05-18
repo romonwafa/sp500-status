@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="{{ status }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SP500 Status - Track the latest updates on the S&P 500 index." />
+    <title>SP500 Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body class="{{ status }}">
+    <header>
+        <h1 id="status-message">Loading status...</h1>
+    </header>
+
+    <section class="image-container">
+        <img src="{{ url_for('static', filename='assets/up.png') }}" alt="Market Status" class="market-image" id="market-image" />
+    </section>
+
+    <footer>
+        <p>&copy; 2025 SP500 Status. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const bodyClass = '{{ status }}';
+        const message =
+            bodyClass === 'down'
+                ? 'The S&P 500 is down today 😟'
+                : 'The S&P 500 is up today 🚀';
+        const imageSrc =
+            bodyClass === 'down'
+                ? "{{ url_for('static', filename='assets/down.jpg') }}"
+                : "{{ url_for('static', filename='assets/up.png') }}";
+
+        document.getElementById('status-message').textContent = message;
+        const marketImage = document.getElementById('market-image');
+        marketImage.src = imageSrc;
+        marketImage.alt = message;
+    </script>
+</body>
+</html>
